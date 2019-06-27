@@ -3,10 +3,12 @@
 % The starting graph is an Erdos-Renyi random graph and the background
 % graph is a 2-block SBM graph.
 % Do the histogram for two different rate parameters (set to 1 and 10,
-% respectively), but plot the two histograms on the same figure.
-% Save the figure as 'hittingtimes.fig' and 'hittingtimes.eps'.
-%
-% Dependencies: sbm.m, dgmgraphs.m
+% respectively).
+% Save the first histogram as 'editdistanceshists1.fig' and
+% 'hittingtimess1.eps'.
+% Save the second histogram as 'editdistanceshists10.fig' and
+% 'hittingtimess10.eps'.
+% Dependencies: sbm.m, dgmtrigger.m
 
 % Parameters.
 n = 50;  % total number of nodes; should be divisible by 2 (eg 50)
@@ -15,7 +17,7 @@ p = 0.9;  % SBM in-cluster connection probability (eg 0.9)
 q = 0.1;  % SBM out-of-cluster connection probability (eg 0.1)
 
 dtarget = 10;  % target edit distance
-s = 1;  % rate of approach to the target edit distance (higher values are slower)
+s = 10;  % rate of approach to the target edit distance (higher values are slower)
 dtrigger = dtarget;  % graph distance to the background graph that stops the dynamic graph model
 period = 1;  % sampling period (higher values require less storage) - actually doesn't matter
 numtrials = 1000;
@@ -47,7 +49,7 @@ B = sbm(repelem(1:2, n/2), p, q);
 htimes = zeros(1,numtrials);
 for i = 1:numtrials
     %disp(i)
-    [~,htimes(i)] = dgmgraphs(B,A,dtarget,s,dtrigger,period);
+    [~,htimes(i)] = dgmtrigger(B,A,dtarget,s,dtrigger,period);
 end
 figure
 p1 = histogram(htimes,'Normalization','probability');
@@ -72,14 +74,24 @@ h = d0 - dtarget + 2 * sums;
 line([h h],[0 height],'Color','k','LineWidth',1)
 disp(h)
 
+% PLOT
+title('Hitting times')
+xlabel('Hitting time')
+ylabel('Frequency')
+%xl = xlim;
+set(gca,'fontsize',20)
+saveas(gcf,['hittingtimes' num2str(s) '.eps'],'epsc')
+saveas(gcf,['hittingtimes' num2str(s) '.fig'])
+
 % RATE 2 %
 % Hitting times
-s = 10;
+s = 1;
 htimes = zeros(1,numtrials);
 for i = 1:numtrials
     %disp(i)
-    [~,htimes(i)] = dgmgraphs(B,A,dtarget,s,dtrigger,period);
+    [~,htimes(i)] = dgmtrigger(B,A,dtarget,s,dtrigger,period);
 end
+figure
 p2 = histogram(htimes,'Normalization','probability');
 hold on
 %line([mean(hittingtimes) mean(hittingtimes)], [0 height])
@@ -102,11 +114,20 @@ h = d0 - dtarget + 2 * sums;
 line([h h],[0 height],'Color','k','LineWidth',1)
 disp(h)
 
+% PLOT
 title('Hitting times')
 xlabel('Hitting time')
 ylabel('Frequency')
-legend([p1,p2],{'s = 1','s = 10'})
-%xlim([580 900])
+%xlim([-inf xl(2)])
 set(gca,'fontsize',20)
-saveas(gcf,'hittingtimes.eps','epsc')
-saveas(gcf,'hittingtimes.fig')
+saveas(gcf,['hittingtimes' num2str(s) '.eps'],'epsc')
+saveas(gcf,['hittingtimes' num2str(s) '.fig'])
+
+% title('Hitting times')
+% xlabel('Hitting time')
+% ylabel('Frequency')
+% legend([p1,p2],{'s = 1','s = 10'})
+% %xlim([580 900])
+% set(gca,'fontsize',20)
+% saveas(gcf,'hittingtimes.eps','epsc')
+% saveas(gcf,'hittingtimes.fig')

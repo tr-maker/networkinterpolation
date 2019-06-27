@@ -31,7 +31,7 @@
 % Save all data relating to 1 and 2 above as 'twotothreeblock.mat'.
 % Save all data relating to 3 above as 'twotothreeblockcomparison.mat'.
 % 
-% Dependencies: dgmgraphs.m, sbm.m, numcorrect.m
+% Dependencies: dgmtrigger.m, sbm.m, numcorrect.m
 
 % Parameters.
 n = 120;  % total number of nodes; should be divisible by 4 and 3 (eg 120)
@@ -65,8 +65,8 @@ truthB2 = repelem(1:3, n/3);
 truthB2 = truthB2(randperm(n));
 B2 = sbm(truthB2, p, q);
 
-[graphs1,numSteps1] = dgmgraphs(B1,A,dtarget,slowness,dtrigger,period);
-[graphs2,numSteps2] = dgmgraphs(B2,A,dtarget,slowness,dtrigger,period);
+[graphs1,numSteps1] = dgmtrigger(B1,A,dtarget,slowness,dtrigger,period);
+[graphs2,numSteps2] = dgmtrigger(B2,A,dtarget,slowness,dtrigger,period);
 assert(isequal(B1, graphs1{end}));
 assert(isequal(B2, graphs2{end}));
 len1 = length(graphs1);
@@ -139,7 +139,7 @@ plot([0:period:period*(len1-2), numSteps1], svdist1, 'LineWidth', 2)
 xlabel('Steps')
 xticks([0 500 1000 1500 2000])
 yticks([0 0.2 0.4 0.6 0.8 1])
-%legend('Recovery rate','Subspace distance')
+legend('Recovery rate','Subspace distance','Location','southwest')
 set(gca,'fontsize',20)
 saveas(gcf,'twotothreeblockrecovery1.eps','epsc')
 saveas(gcf,'twotothreeblockrecovery1.fig')
@@ -152,7 +152,7 @@ plot([0:period:period*(len2-2), numSteps2], svdist2, 'LineWidth', 2)
 xlabel('Steps')
 xticks([0 1000 2000 3000 4000])
 yticks([0 0.2 0.4 0.6 0.8 1])
-%legend('Recovery rate','Subspace distance')
+legend('Recovery rate','Subspace distance','Location','southwest')
 set(gca,'fontsize',20)
 saveas(gcf,'twotothreeblockrecovery2.eps','epsc')
 saveas(gcf,'twotothreeblockrecovery2.fig')
@@ -170,7 +170,7 @@ end
 %plot([0:period:period*(len1-2), numSteps1], eigenvalues1', 'LineWidth', 3)
 %title('2-to-3 block graph, Scenario 1')
 xlabel('Steps')
-%ylabel('Eigenvalues')
+ylabel('Eigenvalues')
 ylim([-0.2 1])
 set(gca,'fontsize',20)
 saveas(gcf,'twotothreeblockeigenvalues1.eps','epsc')
@@ -188,7 +188,7 @@ end
 %plot([0:period:period*(len2-2), numSteps2], eigenvalues2', 'LineWidth', 3)
 %title('2-to-3 block graph, Scenario 2')
 xlabel('Steps')
-%ylabel('Eigenvalues')
+ylabel('Eigenvalues')
 ylim([-0.2 1])
 set(gca,'fontsize',20)
 saveas(gcf,'twotothreeblockeigenvalues2.eps','epsc')
@@ -223,7 +223,7 @@ end
 %plot([0:period:period*(len1-2), numSteps1], eigenvaluescmp1', 'LineWidth', 3)
 %title('2-to-3 block graph, Scenario 1 (algebraic interpolation)')
 xlabel('Steps')
-%ylabel('Eigenvalues')
+ylabel('Eigenvalues')
 ylim([-0.2 1])
 set(gca,'fontsize',20)
 saveas(gcf,'twotothreeblockeigenvaluesalg1.eps','epsc')
@@ -241,7 +241,7 @@ end
 %plot([0:period:period*(len2-2), numSteps2], eigenvaluescmp2', 'LineWidth', 3)
 %title('2-to-3 block graph, Scenario 2 (algebraic interpolation)')
 xlabel('Steps')
-%ylabel('Eigenvalues')
+ylabel('Eigenvalues')
 ylim([-0.2 1])
 set(gca,'fontsize',20)
 saveas(gcf,'twotothreeblockeigenvaluesalg2.eps','epsc')

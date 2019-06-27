@@ -1,6 +1,6 @@
 % Run our graph interpolation model for a specified number of steps.
-% Return a vector of edit distances between the background graph and current graph
-% and a cell array of graphs (in adjacency matrix form).
+% Return a cell array of graphs (in adjacency matrix form) and a vector of 
+% edit distances between the background graph and current graph.
 % b is the adjacency matrix of the background graph.
 % a is the adjacency matrix of the initial current graph.
 % dtarget is the target edit distance between the background graph and the current graph.
@@ -14,7 +14,7 @@
 % The implementation is efficient provided that A and B are sparse.
 % It assumes A and B are undirected.
 
-function [ds,graphs] = dgmrun(B,A,dtarget,slowness,numsteps,period)
+function [graphs,ds] = dgmrun(B,A,dtarget,slowness,numsteps,period)
     n = size(A,1);
     
     % Build upper triangular adjacency matrix of advancing edges.

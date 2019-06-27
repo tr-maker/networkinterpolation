@@ -43,8 +43,8 @@ A = sbm(repelem(1, n), pr, pr);
 B = sbm(repelem(1:2, n/2), p, q);
 
 % RATE 1 %
-slowness = 1;  % rate of approach to the target edit distance (higher values are slower)
-[ds,~] = dgmrun(B,A,dtarget,slowness,numsteps,period);
+slowness = 10;  % rate of approach to the target edit distance (higher values are slower)
+[~,ds] = dgmrun(B,A,dtarget,slowness,numsteps,period);
 ds = ds(ceil(stepsbegin/period) + 1:end);
 figure
 histogram(ds,'Normalization','probability');
@@ -67,14 +67,17 @@ plot(0:2*dtarget, v, '-x', 'LineWidth', 2)
 title(['Time-averaged limiting distribution' newline 'of edit distances'])
 xlabel('Edit distance')
 ylabel('Frequency')
+xlim([0 inf])
+xl = xlim;
+%ylim([0 0.145])
 legend('Experiment',['Analytic' newline 'approximation']);
 set(gca,'fontsize', 20)
 saveas(gcf,['editdistanceshists' num2str(slowness) '.eps'],'epsc')
 saveas(gcf,['editdistanceshists' num2str(slowness) '.fig'])
 
 % RATE 2 %
-slowness = 10;
-[ds,~] = dgmrun(B,A,dtarget,slowness,numsteps,period);
+slowness = 1;
+[~,ds] = dgmrun(B,A,dtarget,slowness,numsteps,period);
 ds = ds(ceil(stepsbegin/period) + 1:end);
 figure
 histogram(ds,'Normalization','probability');
@@ -93,11 +96,11 @@ end
 %%disp(v(1))  % should be pretty much 0
 %%disp(v(end))  % should be pretty much 0
 plot(0:2*dtarget, v, '-x', 'LineWidth', 2)
-ylim([0 0.145])
 
 title(['Time-averaged limiting distribution' newline 'of edit distances'])
 xlabel('Edit distance')
 ylabel('Frequency')
+xlim([0 xl(2)])
 legend('Experiment',['Analytic' newline 'approximation']);
 set(gca,'fontsize', 20)
 saveas(gcf,['editdistanceshists' num2str(slowness) '.eps'],'epsc')

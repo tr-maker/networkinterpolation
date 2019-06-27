@@ -39,7 +39,7 @@ B = sbm(repelem(1:2, n/2), p, q);
 figure
 for i = 1:length(slownesses)
     hold on
-    [ds,~] = dgmrun(B,A,dtarget,slownesses(i),numsteps,period);
+    [~,ds] = dgmrun(B,A,dtarget,slownesses(i),numsteps,period);
     plot(0:period:numsteps, ds, 'LineWidth', 2)
 end
 
