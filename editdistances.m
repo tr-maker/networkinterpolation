@@ -1,6 +1,6 @@
 % Using our interpolation model, plot the edit distance over time for 
 % different rate parameters. 
-% The starting graph is an Erdos-Renyi random graph and the background
+% The starting graph is an Erdos-Renyi random graph and the target
 % graph is a 2-block SBM graph.
 % Save the plot as 'editdistances.fig' and 'editdistances.eps'.
 %
@@ -34,7 +34,7 @@ end
 
 % starting graph
 A = sbm(repelem(1, n), pr, pr);
-% background graph
+% target graph
 B = sbm(repelem(1:2, n/2), p, q);
 figure
 for i = 1:length(slownesses)

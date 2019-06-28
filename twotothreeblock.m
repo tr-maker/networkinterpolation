@@ -40,7 +40,7 @@ q = 0.1;  % out-of-cluster connection probability (eg 0.1)
 
 dtarget = 0;  % target edit distance
 slowness = 1;  % rate of approach to the target edit distance (higher values are slower)
-dtrigger = 0;  % graph distance to the background graph that stops the dynamic graph model
+dtrigger = 0;  % graph distance to the target graph that stops the dynamic graph model
 period = 1;  % sampling period (higher values require less storage)
 
 % Check parameters.
@@ -57,10 +57,10 @@ end
 % starting graph
 truthA = repelem(1:2, n/2);
 A = sbm(truthA, p, q);
-% background graph in scenario 1
+% target graph in scenario 1
 truthB1 = [repelem(1, n/2), repelem(2:3, n/4)];
 B1 = sbm(truthB1, p, q);
-% background graph in scenario 2
+% target graph in scenario 2
 truthB2 = repelem(1:3, n/3);
 truthB2 = truthB2(randperm(n));
 B2 = sbm(truthB2, p, q);

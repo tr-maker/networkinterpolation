@@ -22,7 +22,7 @@ numNodes = size(snaps{1},1);
 % INTERPOLATE
 dtarget = 0;  % target edit distance
 slowness = 1;  % rate of approach to the target edit distance (higher values are slower)
-dtrigger = 0;  % graph distance to the background graph that stops the dynamic graph model
+dtrigger = 0;  % graph distance to the target graph that stops the dynamic graph model
 period = 1;  % sampling period (higher values require less storage).
 
 % Get interpolating graphs.

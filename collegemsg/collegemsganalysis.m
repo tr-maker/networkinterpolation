@@ -33,7 +33,7 @@ disp('Real data done')
 % Interpolation
 dtarget = 0;  % target edit distance
 slowness = 1;  % rate of approach to the target edit distance (higher values are slower)
-dtrigger = 0;  % graph distance to the background graph that stops the dynamic graph model
+dtrigger = 0;  % graph distance to the target graph that stops the dynamic graph model
 period = 100;  % sampling period (higher values require less storage)
 [aci1,cci1,gci1,stepsi1] = dgm(snaps{2},snaps{1},dtarget,...
         slowness,dtrigger,period);
@@ -41,7 +41,7 @@ disp('Interpolation 1 done')
 
 dtarget = 0;  % target edit distance
 slowness = 1900;  % rate of approach to the target edit distance (higher values are slower)
-dtrigger = 0;  % graph distance to the background graph that stops the dynamic graph model
+dtrigger = 0;  % graph distance to the target graph that stops the dynamic graph model
 period = 100;  % sampling period (higher values require less storage)
 [aci2,cci2,gci2,stepsi2] = dgm(snaps{2},snaps{1},dtarget,...
         slowness,dtrigger,period);

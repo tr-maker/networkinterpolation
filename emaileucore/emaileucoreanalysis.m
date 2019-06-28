@@ -19,7 +19,7 @@ numNodes = size(snaps{2},1);
 % Interpolation
 dtarget = 0;  % target edit distance
 slowness = 1;  % rate of approach to the target edit distance (higher values are slower)
-dtrigger = 0;  % graph distance to the background graph that stops the dynamic graph model
+dtrigger = 0;  % graph distance to the target graph that stops the dynamic graph model
 period = 50;  % sampling period (higher values require less storage)
 [aci,cci,gci,stepsi] = dgm(snaps{2},snaps{1},dtarget,...
         slowness,dtrigger,period);

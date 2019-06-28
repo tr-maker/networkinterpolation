@@ -1,9 +1,9 @@
 % Run our graph interpolation model for a specified number of steps.
 % Return a cell array of graphs (in adjacency matrix form) and a vector of 
-% edit distances between the background graph and current graph.
-% b is the adjacency matrix of the background graph.
-% a is the adjacency matrix of the initial current graph.
-% dtarget is the target edit distance between the background graph and the current graph.
+% edit distances between the target graph and current graph.
+% b is the adjacency matrix of the target graph.
+% a is the adjacency matrix of the starting graph.
+% dtarget is the target edit distance between the target graph and the current graph.
 % slowness is the rate of approach to the target edit distance (higher values are slower).
 % numsteps is the number of steps performed.
 % period is the sampling period (higher values require less storage).
@@ -25,7 +25,7 @@ function [graphs,ds] = dgmrun(B,A,dtarget,slowness,numsteps,period)
     
     % upper adjacency matrix of current graph
     graph = triu(A,1);
-    % current number of advancing moves (edit distance between background graph and current graph)
+    % current number of advancing moves (edit distance between target graph and current graph)
     d = nnz(U);
     % current number of regressing moves
     duseless = n*(n-1)/2 - d;

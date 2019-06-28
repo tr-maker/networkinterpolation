@@ -1,11 +1,11 @@
-% Run our graph interpolation model until the specified graph distance to the background graph is reached.
+% Run our graph interpolation model until the specified graph distance to the target graph is reached.
 % Return arrays of the mean and global clustering coefficients of the 
 % interpolating graphs, and an array of the step indices.
-% B is the adjacency matrix of the background graph.
-% A is the adjacency matrix of the initial current graph.
-% dtarget is the target edit distance between the background graph and the current graph.
+% B is the adjacency matrix of the target graph.
+% A is the adjacency matrix of the starting graph.
+% dtarget is the target edit distance between the target graph and the current graph.
 % slowness is the rate of approach to the target edit distance (higher values are slower).
-% dtrigger is the graph distance to the background graph that stops the dynamic graph model.
+% dtrigger is the graph distance to the target graph that stops the dynamic graph model.
 % period is the sampling period (higher values require less storage).
 % 
 % Notes: The first entry in the outputs is the zeroth step of the model, 
@@ -25,7 +25,7 @@ function [ac,gc,steps] = dgm(B,A,dtarget,slowness,dtrigger,period)
     
     % upper adjacency matrix of current graph
     graph = triu(A,1);
-    % current number of advancing moves (edit distance between background graph and current graph)
+    % current number of advancing moves (edit distance between target graph and current graph)
     d = nnz(U);
     % current number of regressing moves
     duseless = n*(n-1)/2 - d;

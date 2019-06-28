@@ -1,6 +1,6 @@
 % Using our interpolation model, plot a histogram of distribution of edit 
 % distances over time and compare with the analytic approximation.
-% The starting graph is an Erdos-Renyi random graph and the background
+% The starting graph is an Erdos-Renyi random graph and the target
 % graph is a 2-block SBM graph.
 % Do the histogram for two different rate parameters (set to 1 and 10,
 % respectively).
@@ -39,7 +39,7 @@ end
 
 % starting graph
 A = sbm(repelem(1, n), pr, pr);
-% background graph
+% target graph
 B = sbm(repelem(1:2, n/2), p, q);
 
 % RATE 1 %

@@ -1,6 +1,6 @@
 % Using our interpolation model, plot a histogram of the distribution of 
 % hitting times and compare with the analytic approximation.
-% The starting graph is an Erdos-Renyi random graph and the background
+% The starting graph is an Erdos-Renyi random graph and the target
 % graph is a 2-block SBM graph.
 % Do the histogram for two different rate parameters (set to 1 and 10,
 % respectively).
@@ -18,7 +18,7 @@ q = 0.1;  % SBM out-of-cluster connection probability (eg 0.1)
 
 dtarget = 10;  % target edit distance
 s = 10;  % rate of approach to the target edit distance (higher values are slower)
-dtrigger = dtarget;  % graph distance to the background graph that stops the dynamic graph model
+dtrigger = dtarget;  % graph distance to the target graph that stops the dynamic graph model
 period = 1;  % sampling period (higher values require less storage) - actually doesn't matter
 numtrials = 1000;
 
@@ -41,7 +41,7 @@ height = 0.7; % height of vertical lines in plot
 
 % starting graph
 A = sbm(repelem(1, n), pr, pr);
-% background graph
+% target graph
 B = sbm(repelem(1:2, n/2), p, q);
 
 % RATE 1 %
@@ -80,8 +80,8 @@ xlabel('Hitting time')
 ylabel('Frequency')
 %xl = xlim;
 set(gca,'fontsize',20)
-saveas(gcf,['hittingtimes' num2str(s) '.eps'],'epsc')
-saveas(gcf,['hittingtimes' num2str(s) '.fig'])
+saveas(gcf,['hittingtimess' num2str(s) '.eps'],'epsc')
+saveas(gcf,['hittingtimess' num2str(s) '.fig'])
 
 % RATE 2 %
 % Hitting times
@@ -120,8 +120,8 @@ xlabel('Hitting time')
 ylabel('Frequency')
 %xlim([-inf xl(2)])
 set(gca,'fontsize',20)
-saveas(gcf,['hittingtimes' num2str(s) '.eps'],'epsc')
-saveas(gcf,['hittingtimes' num2str(s) '.fig'])
+saveas(gcf,['hittingtimess' num2str(s) '.eps'],'epsc')
+saveas(gcf,['hittingtimess' num2str(s) '.fig'])
 
 % title('Hitting times')
 % xlabel('Hitting time')
