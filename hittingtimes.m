@@ -4,9 +4,9 @@
 % graph is a 2-block SBM graph.
 % Do the histogram for two different rate parameters (set to 1 and 10,
 % respectively).
-% Save the first histogram as 'editdistanceshists1.fig' and
+% Save the first histogram as 'hittingtimess1.fig' and
 % 'hittingtimess1.eps'.
-% Save the second histogram as 'editdistanceshists10.fig' and
+% Save the second histogram as 'hittingtimess10.fig' and
 % 'hittingtimess10.eps'.
 % Dependencies: sbm.m, dgmtrigger.m
 

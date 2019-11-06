@@ -184,7 +184,7 @@ save('collegemsganalysis.mat','stepsi1','aci1','cci1','gci1',...
 % PLOT
 figure(fac)
 plot(stepsi1,aci1,'Color',[0    0.7500    0.7500],'LineWidth',2)
-plot(stepsi2,aci2,'color',[0    0.4470    0.7410],'LineWidth',2)
+plot(stepsi2,aci2,'Color',[0    0.4470    0.7410],'LineWidth',2)
 plot(xu,acu,'--','Color',[0.8500    0.3250    0.0980],'LineWidth',2)
 plot(xp,acp,'--','Color',[0.9290    0.6940    0.1250],'LineWidth',2)
 plot(xt,act,'--','Color',[0.4940    0.1840    0.5560],'LineWidth',2)
@@ -203,7 +203,7 @@ saveas(gcf,'collegemsgac.fig')
 
 figure(fgc)
 plot(stepsi1,gci1,'Color',[0    0.7500    0.7500],'LineWidth',2)
-plot(stepsi2,gci2,'color',[0    0.4470    0.7410],'LineWidth',2)
+plot(stepsi2,gci2,'Color',[0    0.4470    0.7410],'LineWidth',2)
 plot(xu,gcu,'--','Color',[0.8500    0.3250    0.0980],'LineWidth',2)
 plot(xp,gcp,'--','Color',[0.9290    0.6940    0.1250],'LineWidth',2)
 plot(xt,gct,'--','Color',[0.4940    0.1840    0.5560],'LineWidth',2)

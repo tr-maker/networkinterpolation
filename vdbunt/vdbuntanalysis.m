@@ -4,8 +4,8 @@
 % Draw four interpolating graphs equally spaced between the second-to-last 
 % snapshot and the last snapshot (including the second-to-last snapshot and
 % the last snapshot). Save these as 'vdbuntgraph[1-4].fig' and 
-% 'vdbuntgraph[1-4].eos'.
-% Plot mean and global clustering coefficients of all the .
+% 'vdbuntgraph[1-4].eps'.
+% Plot mean and global clustering coefficients of all the graphs.
 % Save the figure with the mean clustering coefficients as 'vdbuntac.fig' 
 % and 'vdbuntac.eps'.
 % Save the figure with the global clustering coefficients as 'vdbuntgc.fig'
